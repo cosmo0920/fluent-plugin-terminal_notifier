@@ -1,5 +1,7 @@
 # Fluent::Plugin::TerminalNotifier
 
+[![Build Status](https://travis-ci.org/cosmo0920/fluent-plugin-terminal_notifier.svg?branch=master)](https://travis-ci.org/cosmo0920/fluent-plugin-terminal_notifier)
+
 A fluentd plugin to notify notification center with terminal-notifier.
 
 ## Installation
