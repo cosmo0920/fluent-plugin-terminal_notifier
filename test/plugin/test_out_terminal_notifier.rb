@@ -38,7 +38,9 @@ class TerminalNotifierOutputTest < Test::Unit::TestCase
     d = create_driver
     time = Time.parse('2013-02-12 22:01:15 UTC').to_i
     d.run do
-      d.emit({"title": "test title", "subtitle": "it's sub.", "message": "This is one of the test case"})
+      d.emit({"title" => "test title",
+              "subtitle" => "it's sub.",
+              "message" => "This is one of the test case"})
     end
 
     assert_true $?.success?
