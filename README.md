@@ -1,8 +1,6 @@
 # Fluent::Plugin::TerminalNotifier
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/fluent/plugin/terminal_notifier`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A fluentd plugin to notify notification center with terminal-notifier.
 
 ## Installation
 
@@ -20,9 +18,36 @@ Or install it yourself as:
 
     $ gem install fluent-plugin-terminal_notifier
 
-## Usage
+## Configuration Example
 
-TODO: Write usage instructions here
+For example, add `terminal-notifier` configuration section like this:
+
+```
+<match terminal-notifier.**>
+  type terminal-notifier
+  title test
+  sub_title sub
+</match>
+```
+
+Also you can specify app ID to activate Terminal.app like this:
+
+```
+<match terminal-notifier.**>
+  type terminal-notifier
+  title test
+  sub_title sub
+  activate com.apple.Terminal
+</match>
+```
+
+In more detail about activatation, please refer to the [TerminalNotifier document](https://github.com/julienXX/terminal-notifier/blob/f727ffdb19c91bd4f87d30274c12044ccea47fe2/README.markdown).
+
+## Parameters
+
+- **title** (String. Optional) This key is used in Notification title.
+- **sub_title** (String. Optional) This key is used in Notification sub title.
+- **activate** (String. Optional) This key is used in OS X application activating.
 
 ## Development
 
@@ -32,10 +57,9 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/fluent-plugin-terminal_notifier.
+Bug reports and pull requests are welcome on GitHub at https://github.com/cosmo0920/fluent-plugin-terminal_notifier.
 
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-

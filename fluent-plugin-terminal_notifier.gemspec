@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Hiroshi Hatake"]
   spec.email         = ["cosmo0920.wp@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Fluent TerminalNotifier plugin.}
+  spec.description   = %q{A fluentd plugin to notify notification center with terminal-notifier.}
+  spec.homepage      = "https://github.com/cosmo0920/fluent-plugin-terminal_notifier"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
