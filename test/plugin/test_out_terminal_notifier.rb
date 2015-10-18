@@ -22,23 +22,19 @@ class TerminalNotifierOutputTest < Test::Unit::TestCase
     assert_equal "org.fluentd", d.instance.activate
   end
 
-  def exist_command?(command)
-    require 'open3'
-
-    begin
-      Open3.capture3("which #{command}")[2].exited?
-    rescue Errno::ENOENT
-      false
-    end
+  def osx?
+    /darwin/ =~ RUBY_PLATFORM
   end
 
   def test_emit
-    omit("This test needs to 'terminal-notifier' command.") unless exist_command?("terminal-notifier")
+    omit("This test needs OS X.") unless osx?
 
     d = create_driver
     time = Time.parse('2013-02-12 22:01:15 UTC').to_i
     d.run do
-      d.emit({"title": "test title", "subtitle": "it's sub.", "message": "This is one of the test case"})
+      d.emit({"title" => "test title",
+              "subtitle" => "it's sub.",
+              "message" => "This is one of the test case"})
     end
 
     assert_true $?.success?
