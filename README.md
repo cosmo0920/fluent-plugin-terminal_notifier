@@ -30,7 +30,9 @@ For example, add `terminal-notifier` configuration section like this:
 </match>
 ```
 
-Also you can specify app ID to activate Terminal.app like this:
+Also you can specify app ID to activate like this:
+
+This example is activating Terminal.app.
 
 ```
 <match terminal-notifier.**>
