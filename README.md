@@ -20,7 +20,10 @@ Or install it yourself as:
 
     $ gem install fluent-plugin-terminal_notifier
 
-## Configuration Example
+
+## TerminalNotifierOutput
+
+### Configuration Example
 
 For example, add `terminal-notifier` configuration section like this:
 
@@ -47,7 +50,44 @@ This example is activating Terminal.app.
 
 In more detail about activatation, please refer to the [TerminalNotifier document](https://github.com/julienXX/terminal-notifier/blob/f727ffdb19c91bd4f87d30274c12044ccea47fe2/README.markdown).
 
-## Parameters
+### Parameters
+
+- **title** (String. Optional) This key is used in Notification title.
+- **sub_title** (String. Optional) This key is used in Notification sub title.
+- **activate** (String. Optional) This key is used in OS X application activating.
+
+## TerminalNotifierFilter
+
+### Configuration Example
+
+This is a filter version of terminal-notifier fluentd plugin.
+
+For example, add `terminal-notifier` configuration section like this:
+
+```
+<filter filter.terminal-notifier.**>
+  type terminal-notifier
+  title filtered
+  sub_title sub_filtered
+</filter>
+```
+
+Also you can specify app ID to activate like this:
+
+This example is activating Terminal.app.
+
+```
+<filter filter.terminal-notifier.**>
+  type terminal-notifier
+  title filtered
+  sub_title sub_filtered
+  activate com.apple.Terminal
+</filter>
+```
+
+In more detail about activatation, please refer to the [TerminalNotifier document](https://github.com/julienXX/terminal-notifier/blob/f727ffdb19c91bd4f87d30274c12044ccea47fe2/README.markdown).
+
+### Parameters
 
 - **title** (String. Optional) This key is used in Notification title.
 - **sub_title** (String. Optional) This key is used in Notification sub title.
