@@ -38,7 +38,7 @@ class TerminalNotifierOutputTest < Test::Unit::TestCase
   end
 
   data("all included" => [{"title" => "test title",
-                           "subtitle" => "it's sub.",
+                           "sub_title" => "it's sub.",
                            "message" => "This is one of the test case"}, CONFIG],
        "lack of sub title" => [{"title" => "test title",
                                 "message" => "This is one of the test case"},
