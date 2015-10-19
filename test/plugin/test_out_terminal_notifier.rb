@@ -1,6 +1,8 @@
 require 'helper'
 
 class TerminalNotifierOutputTest < Test::Unit::TestCase
+  include Fluent::TestUtil
+
   def setup
     Fluent::Test.setup
   end
@@ -31,10 +33,6 @@ class TerminalNotifierOutputTest < Test::Unit::TestCase
         d = create_driver EMPTY_CONFIG
       end
     end
-  end
-
-  def osx?
-    /darwin/ =~ RUBY_PLATFORM
   end
 
   data("all included" => [{"title" => "test title",
