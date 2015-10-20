@@ -93,6 +93,12 @@ In more detail about activatation, please refer to the [TerminalNotifier documen
 - **sub_title** (String. Optional) This key is used in Notification sub title.
 - **activate** (String. Optional) This key is used in OS X application activating.
 
+## More Complex Example
+
+Please refer to the [example configuration](example/fluent.conf).
+
+And note that this output plugin do not emit records, so, please consider to use something like copy plugin.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
