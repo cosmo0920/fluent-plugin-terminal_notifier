@@ -1,4 +1,5 @@
 require 'helper'
+require 'fluent/test/driver/filter'
 
 class TerminalNotifierFilterTest < Test::Unit::TestCase
   include Fluent::TestUtil
@@ -16,8 +17,8 @@ class TerminalNotifierFilterTest < Test::Unit::TestCase
   EMPTY_CONFIG = %[
   ]
 
-  def create_driver(conf=CONFIG, tag='filtered.test')
-    Fluent::Test::FilterTestDriver.new(Fluent::TerminalNotifierFilter, tag).configure(conf)
+  def create_driver(conf=CONFIG)
+    Fluent::Test::Driver::Filter.new(Fluent::Plugin::TerminalNotifierFilter).configure(conf)
   end
 
   class TestConfigure < self
@@ -40,10 +41,10 @@ class TerminalNotifierFilterTest < Test::Unit::TestCase
 
     d = create_driver CONFIG
     time = Time.parse('2013-02-12 22:01:15 UTC').to_i
-    d.run do
-      d.filter({"title" => "filtered title",
-                "sub_title" => "it's filtered sub.",
-                "message" => "This is one of the filtered test case"})
+    d.run(default_tag: 'io.fluent-bit') do
+      d.feed({"title" => "filtered title",
+              "sub_title" => "it's filtered sub.",
+              "message" => "This is one of the filtered test case"})
     end
 
     assert_true $?.success?

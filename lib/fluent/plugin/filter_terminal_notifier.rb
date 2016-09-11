@@ -1,9 +1,11 @@
-module Fluent
-  class TerminalNotifierFilter < Filter
-    require_relative './notify_util'
-    include NotifyUtil
+require 'fluent/plugin/filter'
+require_relative './notify_util'
 
-    Plugin.register_filter('terminal-notifier', self);
+module Fluent::Plugin
+  class TerminalNotifierFilter < Filter
+    include Fluent::NotifyUtil
+
+    Fluent::Plugin.register_filter('terminal-notifier', self);
 
     DEFAULT_TITLE             = "Fluentd Notification"
     DEFAULT_SUB_TITLE         = "Fluentd Notification Sub Title"
