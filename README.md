@@ -4,6 +4,15 @@
 
 A fluentd plugin to notify notification center with terminal-notifier.
 
+## Notice
+
+0.1.0 had been dropped support Fluentd v0.12.
+If you want to use this plugin with Fluentd v0.12, please add version constraint in your Gemfile like as:
+
+```ruby
+gem "fluent-plugin-formatter_simple_tsv", "~> 0.0.3"
+```
+
 ## Installation
 
 Add this line to your application's Gemfile:
