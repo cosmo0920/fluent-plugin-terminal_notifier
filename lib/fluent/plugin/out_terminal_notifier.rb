@@ -1,9 +1,11 @@
-module Fluent
-  class TerminalNotifierOutput < Output
-    require_relative './notify_util'
-    include NotifyUtil
+require 'fluent/plugin/output'
+require_relative './notify_util'
 
-    Plugin.register_output('terminal-notifier', self);
+module Fluent::Plugin
+  class TerminalNotifierOutput < Output
+    include Fluent::NotifyUtil
+
+    Fluent::Plugin.register_output('terminal-notifier', self);
 
     DEFAULT_TITLE             = "Fluentd Notification"
     DEFAULT_SUB_TITLE         = "Fluentd Notification Sub Title"
@@ -16,11 +18,10 @@ module Fluent
       super
     end
 
-    def emit(tag, es, chain)
+    def process(tag, es)
       es.each{|time,record|
         notify(time, record)
       }
-      chain.next
     end
   end
 end

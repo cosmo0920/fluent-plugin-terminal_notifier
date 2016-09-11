@@ -1,4 +1,5 @@
 require 'helper'
+require 'fluent/test/driver/output'
 
 class TerminalNotifierOutputTest < Test::Unit::TestCase
   include Fluent::TestUtil
@@ -16,8 +17,8 @@ class TerminalNotifierOutputTest < Test::Unit::TestCase
   EMPTY_CONFIG = %[
   ]
 
-  def create_driver(conf=CONFIG, tag='test')
-    Fluent::Test::OutputTestDriver.new(Fluent::TerminalNotifierOutput, tag).configure(conf)
+  def create_driver(conf=CONFIG)
+    Fluent::Test::Driver::Output.new(Fluent::Plugin::TerminalNotifierOutput).configure(conf)
   end
 
   class TestConfigure < self
@@ -47,13 +48,13 @@ class TerminalNotifierOutputTest < Test::Unit::TestCase
                          EMPTY_CONFIG],
 
       )
-  def test_emit(data)
+  def test_process(data)
     omit("This test needs OS X.") unless osx?
     target, config = data
     d = create_driver config
     time = Time.parse('2013-02-12 22:01:15 UTC').to_i
-    d.run do
-      d.emit(target)
+    d.run(default_tag: 'test') do
+      d.feed(target)
     end
 
     assert_true $?.success?
