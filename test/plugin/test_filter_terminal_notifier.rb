@@ -31,7 +31,7 @@ class TerminalNotifierFilterTest < Test::Unit::TestCase
 
     def test_empty_configure
       assert_nothing_raised do
-        d = create_driver EMPTY_CONFIG
+        create_driver EMPTY_CONFIG
       end
     end
   end
@@ -42,9 +42,9 @@ class TerminalNotifierFilterTest < Test::Unit::TestCase
     d = create_driver CONFIG
     time = Time.parse('2013-02-12 22:01:15 UTC').to_i
     d.run(default_tag: 'io.fluent-bit') do
-      d.feed({"title" => "filtered title",
-              "sub_title" => "it's filtered sub.",
-              "message" => "This is one of the filtered test case"})
+      d.feed(time, {"title" => "filtered title",
+                    "sub_title" => "it's filtered sub.",
+                    "message" => "This is one of the filtered test case"})
     end
 
     assert_true $?.success?

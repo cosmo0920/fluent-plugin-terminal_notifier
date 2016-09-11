@@ -31,7 +31,7 @@ class TerminalNotifierOutputTest < Test::Unit::TestCase
 
     def test_empty_configure
       assert_nothing_raised do
-        d = create_driver EMPTY_CONFIG
+        create_driver EMPTY_CONFIG
       end
     end
   end
@@ -54,7 +54,7 @@ class TerminalNotifierOutputTest < Test::Unit::TestCase
     d = create_driver config
     time = Time.parse('2013-02-12 22:01:15 UTC').to_i
     d.run(default_tag: 'test') do
-      d.feed(target)
+      d.feed(time, target)
     end
 
     assert_true $?.success?
