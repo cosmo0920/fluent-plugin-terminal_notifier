@@ -37,8 +37,8 @@ Or install it yourself as:
 For example, add `terminal-notifier` configuration section like this:
 
 ```
-<match terminal-notifier.**>
-  type terminal-notifier
+<match terminal_notifier.**>
+  @type terminal_notifier
   title test
   sub_title sub
 </match>
@@ -49,8 +49,8 @@ Also you can specify app ID to activate like this:
 This example is activating Terminal.app.
 
 ```
-<match terminal-notifier.**>
-  type terminal-notifier
+<match terminal_notifier.**>
+  @type terminal_notifier
   title test
   sub_title sub
   activate com.apple.Terminal
@@ -71,11 +71,11 @@ In more detail about activatation, please refer to the [TerminalNotifier documen
 
 This is a filter version of terminal-notifier fluentd plugin.
 
-For example, add `terminal-notifier` configuration section like this:
+For example, add `terminal_notifier` configuration section like this:
 
 ```
-<filter filter.terminal-notifier.**>
-  type terminal-notifier
+<filter filter.terminal_notifier.**>
+  @type terminal_notifier
   title filtered
   sub_title sub_filtered
 </filter>
@@ -86,8 +86,8 @@ Also you can specify app ID to activate like this:
 This example is activating Terminal.app.
 
 ```
-<filter filter.terminal-notifier.**>
-  type terminal-notifier
+<filter filter.terminal_notifier.**>
+  @type terminal_notifier
   title filtered
   sub_title sub_filtered
   activate com.apple.Terminal
