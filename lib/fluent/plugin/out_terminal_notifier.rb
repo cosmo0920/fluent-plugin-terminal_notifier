@@ -5,7 +5,7 @@ module Fluent::Plugin
   class TerminalNotifierOutput < Output
     include Fluent::NotifyUtil
 
-    Fluent::Plugin.register_output('terminal-notifier', self);
+    Fluent::Plugin.register_output('terminal_notifier', self);
 
     DEFAULT_TITLE             = "Fluentd Notification"
     DEFAULT_SUB_TITLE         = "Fluentd Notification Sub Title"
